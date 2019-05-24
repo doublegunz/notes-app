@@ -19,13 +19,20 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
     implements View.OnClickListener, LoadNotesCallback {
 
-    private RecyclerView rvNotes;
-    private ProgressBar progressBar;
-    private FloatingActionButton fabAdd;
+    @BindView(R.id.rv_notes)
+    RecyclerView rvNotes;
+
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
+
+    @BindView(R.id.fab_add)
+    FloatingActionButton fabAdd;
+
     private static final String EXTRA_STATE = "EXTRA_STATE";
     private NoteAdapter adapter;
     private NoteHelper noteHelper;
@@ -39,7 +46,9 @@ public class MainActivity extends AppCompatActivity
             getSupportActionBar().setTitle("Notes");
         }
 
-        rvNotes = findViewById(R.id.rv_notes);
+        ButterKnife.bind(this);
+
+
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
         rvNotes.setHasFixedSize(true);
 
@@ -48,8 +57,7 @@ public class MainActivity extends AppCompatActivity
         //open koneksi db
         noteHelper.open();
 
-        progressBar = findViewById(R.id.progressbar);
-        fabAdd = findViewById(R.id.fab_add);
+
         fabAdd.setOnClickListener(this);
 
         adapter = new NoteAdapter(this);

@@ -21,10 +21,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NoteAddUpdateActivity extends AppCompatActivity
     implements View.OnClickListener {
-    private EditText edtTitle, edtDescription;
-    private Button btnSubmit;
+
+    @BindView(R.id.edt_title)
+    EditText edtTitle;
+
+    @BindView(R.id.edt_description)
+    EditText edtDescription;
+
+    @BindView(R.id.btn_submit)
+    Button btnSubmit;
 
     public static final String EXTRA_NOTE = "extra_note";
     public static final String EXTRA_POSITION = "extra_position";
@@ -46,9 +56,7 @@ public class NoteAddUpdateActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_add_update);
 
-        edtTitle = findViewById(R.id.edt_title);
-        edtDescription = findViewById(R.id.edt_description);
-        btnSubmit = findViewById(R.id.btn_submit);
+        ButterKnife.bind(this);
 
         btnSubmit.setOnClickListener(this);
 

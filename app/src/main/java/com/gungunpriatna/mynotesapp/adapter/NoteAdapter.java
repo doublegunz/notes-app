@@ -17,6 +17,9 @@ import com.gungunpriatna.mynotesapp.entity.Note;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
     private ArrayList<Note> listNotes = new ArrayList<>();
     private Activity activity;
@@ -90,15 +93,21 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     }
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
-        final TextView tvTitle, tvDescription, tvDate;
-        final CardView cvNote;
+        @BindView(R.id.tv_item_date)
+        TextView tvDate;
+
+        @BindView(R.id.tv_item_description)
+        TextView tvDescription;
+
+        @BindView(R.id.tv_item_title)
+        TextView tvTitle;
+
+        @BindView(R.id.cv_item_note)
+        CardView cvNote;
 
         NoteViewHolder(View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tv_item_title);
-            tvDescription = itemView.findViewById(R.id.tv_item_description);
-            tvDate = itemView.findViewById(R.id.tv_item_date);
-            cvNote = itemView.findViewById(R.id.cv_item_note);
+            ButterKnife.bind(this, itemView);
         }
 
 
