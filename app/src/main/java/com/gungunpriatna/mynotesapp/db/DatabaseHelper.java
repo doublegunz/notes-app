@@ -4,16 +4,18 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import static com.gungunpriatna.mynotesapp.db.DatabaseContract.TABLE_NAME;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static String DATABASE_NAME = 'dbnoteapp';
+    public static String DATABASE_NAME = "dbnoteapp";
 
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_TABLE_NOTE = String.format("CREATE TABLE %s"
-        + " (%s INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            " %s TEXT NOT NULL, " +
-            " %s TEXT NOT NULL, " +
-            " %s TEXT NOT NULL",
-            DatabaseContract.TABLE_NOTE,
+                    + " (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    " %s TEXT NOT NULL," +
+                    " %s TEXT NOT NULL," +
+                    " %s TEXT NOT NULL)",
+            TABLE_NAME,
             DatabaseContract.NoteColumns._ID,
             DatabaseContract.NoteColumns.TITLE,
             DatabaseContract.NoteColumns.DESCRIPTION,
@@ -32,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DatabaseContract.TABLE_NOTE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
 
     }

@@ -15,6 +15,7 @@ import static android.provider.BaseColumns._ID;
 import static com.gungunpriatna.mynotesapp.db.DatabaseContract.NoteColumns.DATE;
 import static com.gungunpriatna.mynotesapp.db.DatabaseContract.NoteColumns.DESCRIPTION;
 import static com.gungunpriatna.mynotesapp.db.DatabaseContract.NoteColumns.TITLE;
+import static com.gungunpriatna.mynotesapp.db.DatabaseContract.TABLE_NAME;
 
 public class NoteHelper {
     private static final String DATABASE_TABLE = TABLE_NAME;
@@ -36,6 +37,8 @@ public class NoteHelper {
                 }
             }
         }
+
+        return INSTANCE;
     }
 
     //open koneksi db
