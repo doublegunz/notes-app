@@ -18,8 +18,11 @@ import com.gungunpriatna.mynotesapp.entity.Note;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 public class MainActivity extends AppCompatActivity
     implements View.OnClickListener, LoadNotesCallback {
+
     private RecyclerView rvNotes;
     private ProgressBar progressBar;
     private FloatingActionButton fabAdd;
